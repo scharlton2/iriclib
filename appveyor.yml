@@ -2,7 +2,7 @@ version: '{branch}-{build}'
 
 image:
   - Visual Studio 2013
-  - Visual Studio 2015
+  - Visual Studio 2017
 
 # called before clone
 init:
