@@ -39,6 +39,13 @@ target_sources(unittests_cgnsfile
     case_sol_startend.cpp
 )
 
+# unittests_cgnsfile compile definitions
+target_compile_definitions(unittests_cgnsfile
+  PRIVATE
+    _CRT_SECURE_NO_DEPRECATE
+    _SCL_SECURE_NO_WARNINGS
+)
+
 # unittests_cgnsfile link libraries
 target_link_libraries(unittests_cgnsfile
   PRIVATE
