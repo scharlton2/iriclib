@@ -7,7 +7,7 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: RelWithDebInfo
-  GENERATOR: 'Visual Studio 16 2019'
+  GENERATOR: Visual Studio 16 2019
   SGEN: vs2013-x64
   HDF5_VER: 1.8.21
   POCO_VER: 1.9.4
