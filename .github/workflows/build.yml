@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: i-RIC/iricdev-2019
-        ref: master
+        ref: 2019
                 
     - name: Checkout iriclib
       uses: actions/checkout@v2
@@ -37,15 +37,19 @@ jobs:
       with:
         vs-version: '[16.9,16.10)'
 
+    - name: Setup programs
+      run: Copy-Item .\programs_std.prop .\programs.prop
+
     - name: debug
       run: |
         Get-Command curl
+        Write-Output ${{$env:HDF5_VER}}
         Get-Command cmake
+        Write-Output ${{$env:POCO_VER}}
         Get-Command ctest
+        Write-Output $env:POCO_VER
         Get-Command 7z
         Get-Command msbuild
-        Write-Output ${{$env:HDF5_VER}}
-        Write-Output ${{$env:POCO_VER}}
 
     - name: Build poco
       run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
