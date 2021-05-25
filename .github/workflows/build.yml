@@ -30,10 +30,12 @@ jobs:
       with:
         path: lib/src/iriclib-git
 
-    - name: debug
+    - name: Setup path for msbuild
       uses: microsoft/setup-msbuild@v1.0.2
       with:
         vs-version: '[16.9,16.10)'
+
+    - name: debug
       run: |
         Get-Command curl
         Get-Command cmake
