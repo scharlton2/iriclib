@@ -48,7 +48,7 @@ jobs:
         Write-Output $env:POCO_VER
         Write-Output $env:HDF5_VER
 
-    -name: Build poco
+    - name: Build poco
       run: Get-ChildItem iricdev.proj
 
     # - name: Configure CMake
