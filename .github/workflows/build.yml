@@ -17,7 +17,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout iriclib
     - uses: actions/checkout@v2
       with:
         path: iricdev/lib/src/iriclib-git
