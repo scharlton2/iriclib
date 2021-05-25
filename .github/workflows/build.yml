@@ -36,7 +36,7 @@ jobs:
         vs-version: '[16.9,16.10)'
 
     - name: Set versions
-      run: versions.cmd
+      run: .\versions.cmd
 
     - name: debug
       run: |
