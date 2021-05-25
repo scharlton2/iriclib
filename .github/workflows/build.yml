@@ -18,8 +18,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        path: iricdev/lib/src/iriclib-git
+      # with:
+      #   path: iricdev/lib/src/iriclib-git
 
     # - name: Checkout iricdev
     # - uses: actions/checkout@v2
