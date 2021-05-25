@@ -9,6 +9,8 @@ env:
   BUILD_TYPE: RelWithDebInfo
   GENERATOR: 'Visual Studio 16 2019'
   SGEN: vs2013-x64
+  HDF5_VER: 1.8.21
+  POCO_VER: 1.9.4
 
 jobs:
   build:
@@ -35,11 +37,6 @@ jobs:
       with:
         vs-version: '[16.9,16.10)'
 
-    - name: Set versions
-      run: |
-        .\versions.cmd
-        $env:POCO_VER="1.9.4"
-
     - name: debug
       run: |
         Get-Command curl
@@ -47,9 +44,8 @@ jobs:
         Get-Command ctest
         Get-Command 7z
         Get-Command msbuild
-        Write-Output $env:POCO_VER
-        Write-Output $env:HDF5_VER
-        Write-Output $env:POCO_VER
+        Write-Output ${{$env:HDF5_VER}}
+        Write-Output ${{$env:POCO_VER}}
 
     - name: Build poco
       run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
