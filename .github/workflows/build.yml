@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: i-RIC/iricdev-2019
-        ref: master
+        ref: 2019
                 
     - name: Checkout iriclib
       uses: actions/checkout@v2
@@ -38,7 +38,9 @@ jobs:
     - name: Set versions
       run: |
         .\versions.cmd
-        $env:POCO_VER="1.9.4"
+        Write-Output $env:POCO_VER
+        Write-Output $env:HDF5_VER
+        Copy-Item .\programs_std.prop .\programs.prop
 
     - name: debug
       run: |
@@ -51,8 +53,8 @@ jobs:
         Write-Output $env:HDF5_VER
         Write-Output $env:POCO_VER
 
-    - name: Build poco
-      run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
+    # - name: Build poco
+    #   run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
 
     # - name: Configure CMake
     #   # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
