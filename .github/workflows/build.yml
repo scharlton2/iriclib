@@ -36,7 +36,9 @@ jobs:
         vs-version: '[16.9,16.10)'
 
     - name: Set versions
-      run: .\versions.cmd
+      run: |
+        .\versions.cmd
+        $env:POCO_VER="1.9.4"
 
     - name: debug
       run: |
@@ -47,9 +49,10 @@ jobs:
         Get-Command msbuild
         Write-Output $env:POCO_VER
         Write-Output $env:HDF5_VER
+        Write-Output $env:POCO_VER
 
     - name: Build poco
-      run: Get-ChildItem iricdev.proj
+      run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
 
     # - name: Configure CMake
     #   # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
