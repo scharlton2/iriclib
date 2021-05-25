@@ -17,22 +17,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-      # with:
-      #   path: iricdev/lib/src/iriclib-git
+    - name: Checkout iriclib
+      uses: actions/checkout@v2
+      with:
+        path: iricdev/lib/src/iriclib-git
 
-    # - name: Checkout iricdev
-    # - uses: actions/checkout@v2
-    #   with:
-    #     repository: i-RIC/iricdev
-    #     ref: master
-    #     path: iricdev
-        
-    # - name: Checkout iriclib
-    # - uses: actions/checkout@v2
-    #   with:
-    #     path: iricdev/lib/src/iriclib-git
-        
+    - name: Checkout iricdev
+      uses: actions/checkout@v2
+      with:
+        repository: i-RIC/iricdev
+        ref: master
+        path: iricdev
+                
     - name: debug
       run: dir -Recurse
 
