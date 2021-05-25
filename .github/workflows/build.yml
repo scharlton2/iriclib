@@ -43,11 +43,11 @@ jobs:
     - name: debug
       run: |
         Get-Command curl
-        Write-Output ${{ $env:HDF5_VER }}
+        Write-Output ${{ env.HDF5_VER }}
         Get-Command cmake
-        Write-Output ${{ $env:POCO_VER }}
+        Write-Output ${{ env.POCO_VER }}
         Get-Command ctest
-        Write-Output $env:POCO_VER
+        Write-Output env.POCO_VER
         Get-Command 7z
         Get-Command msbuild
 
