@@ -7,8 +7,8 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: RelWithDebInfo
-  GENERATOR: Visual Studio 16 2019
-  SGEN: vs2013-x64
+  GENERATOR: 'Visual Studio 16 2019'
+  SGEN: vs2019-x64
   HDF5_VER: 1.8.21
   POCO_VER: 1.9.4
 
@@ -47,12 +47,13 @@ jobs:
         Get-Command cmake
         Write-Output ${{ env.POCO_VER }}
         Get-Command ctest
-        Write-Output env.POCO_VER
+        Write-Output ${{ env.GENERATOR }}
         Get-Command 7z
         Get-Command msbuild
 
     - name: Build poco
-      run: msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
+      run: |
+        msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
 
     # - name: Configure CMake
     #   # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
