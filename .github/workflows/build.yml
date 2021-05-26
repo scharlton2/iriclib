@@ -39,7 +39,7 @@ jobs:
 
     - name: Test set env var
       run: |
-        echo "YYY=XXX" >> $GITHUB_ENV
+        echo "YYY=XXX" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
     - name: Setup programs
       run: Copy-Item .\programs_std.prop .\programs.prop
