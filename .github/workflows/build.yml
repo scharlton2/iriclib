@@ -37,6 +37,10 @@ jobs:
       with:
         vs-version: '[16.9,16.10)'
 
+    - name: Test set env var
+      run: |
+        echo "YYY=XXX" >> $GITHUB_ENV
+
     - name: Setup programs
       run: Copy-Item .\programs_std.prop .\programs.prop
 
@@ -49,6 +53,7 @@ jobs:
         Get-Command ctest
         Write-Output ${{ env.GENERATOR }}
         Get-Command 7z
+        Write-Output ${{ env.YYY }}
         Get-Command msbuild
 
     - name: Build poco
