@@ -44,6 +44,11 @@ jobs:
     - name: Setup programs
       run: Copy-Item .\programs_std.prop .\programs.prop
 
+    - name: debug path
+      working-directory: ${{runner.workspace}}
+      run: |
+        Get-ChildItem -Recurse
+
     - name: debug
       run: |
         Get-Command curl
@@ -58,7 +63,8 @@ jobs:
 
     - name: Build poco
       run: |
-        msbuild /noLogo /maxCpuCount /target:poco-build-release iricdev.proj
+        msbuild /noLogo /maxCpuCount /target:poco-src iricdev.proj
+
 
     # - name: Configure CMake
     #   # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
